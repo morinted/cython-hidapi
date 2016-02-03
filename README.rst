@@ -1,20 +1,12 @@
 cython-hidapi
 =============
 
-.. image:: https://travis-ci.org/trezor/cython-hidapi.svg?branch=master
-    :target: https://travis-ci.org/trezor/cython-hidapi
-
-.. contents::
-
 Description
 -----------
 
 A Cython interface to the HIDAPI from https://github.com/signal11/hidapi
 
-This has been tested with:
-
-* the PIC18F4550 on the development board from CCS with their example program.
-* the Fine Offset WH3081 Weather Station.
+Modified by @morinted to fix building universal binaries on OS X
 
 It works on Linux, Windows XP and OS X.
 
@@ -31,44 +23,30 @@ License
 cython-hidapi may be used by one of three licenses as outlined in LICENSE.txt.
 
 
-Install
--------
-
-    $ pip install hidapi
-
-For other download options visit the PyPi page of cython-hidapi (https://pypi.python.org/pypi/hidapi/)
-
-Build from source
------------------
+Building
+--------
 
 1. Download cython-hidapi archive::
 
-    $ git clone https://github.com/trezor/cython-hidapi.git
+    $ git clone https://github.com/morinted/cython-hidapi.git --recursive
     $ cd cython-hidapi
 
-2. Initialize hidapi submodule::
-
-    $ git submodule init
-    $ git submodule update
-
-3. Build cython-hidapi extension module::
+2. Build cython-hidapi extension module::
 
     $ python setup.py build
 
-   To use hidraw API instead of libusb add --without-libusb option::
-
-    $ python setup.py build --without-libusb
-
-4. Install cython-hidapi module into your Python distribution::
+3. Install cython-hidapi module into your Python distribution::
 
     $ [sudo] python setup.py install
 
-5. Test install::
+4. Test install::
 
     $ python
     >>> import hid
     >>>
 
-6. Try example script::
+5. Test 32-bit::
+    $ arch -32 python
+    >>> import hid
+    >>>
 
-    $ python try.py
