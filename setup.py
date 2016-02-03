@@ -41,8 +41,9 @@ if sys.platform.startswith('linux'):
     )
 
 if sys.platform.startswith('darwin'):
-    os.environ['CFLAGS'] = '-framework IOKit -framework CoreFoundation'
-    os.environ['LDFLAGS'] = ''
+    os.environ['CFLAGS'] = '-arch i386 -arch x86_64'
+    os.environ['LDFLAGS'] = '-framework IOKit -framework CoreFoundation -arch i386 -arch x86_64'
+    os.environ['CXXFLAGS'] = '-arch i386 -arch x86_64'
     modules = [
         Extension('hid',
                   sources = ['hid.pyx', 'chid.pxd', hidapi_src('mac')],
